@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/styles.css"></link>
+	<script src="js/script.js"></script>
+</head>
+<body onload="initialize()">
+    <canvas id="circlecnv"></canvas>
+    <div id="UI" onmouseover="mouseOverUI()" >
+        <canvas id="topcnv"></canvas>
+			<div class="topBar">
+				<div id="play_audio">
+					<audio id="audio" src="audio/song.mp3" autoplay="true" hidden="true" loop="true">
+						<script>
+							var play = false;
+							var myAudio = document.getElementById("audio");
+									
+							myAudio.volume = 1;
+									
+							function onKeyDown(event) {
+								switch (event.keyCode) {
+									case 32: //SpaceBar                    
+										if (play) {
+											myAudio.pause();
+											play = false;
+										} else {
+											myAudio.play();
+											play = true;
+										}
+										break;
+								}
+								return false;
+							}
+							window.addEventListener("keydown", onKeyDown, false);
+						</script>
+					</audio>
+				</div>
+            <input id="audioFile" type="file" accept="audio/song.mp3" capture/> 
+        </div>
+    </div>
+    <p></p>
+    <canvas class="visualizer" id="cnv1" width="1024" height="350"></canvas>
+</body>
+</html>
